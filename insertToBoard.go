@@ -6,8 +6,8 @@ package main
 // Returns 2D array with updated state of the board
 func insertToBoard(symbol string, board [3][3]string, coords [2]int) [3][3]string {
 
-	y := coords[0]
-	x := coords[1]
+	y := coords[1]
+	x := coords[0]
 	board[y][x] = symbol
 
 	return board

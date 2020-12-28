@@ -18,9 +18,11 @@ func askNames() (p1 player, p2 player) {
 	symbolCheck := p1.symbol == "X" || p1.symbol == "O"
 
 	for symbolCheck != true {
+		fmt.Println("Please select X or O...")
 		fmt.Println("Player 1 select your symbol: ")
 		fmt.Scanln(&p1.symbol)
 		symbolCheck = p1.symbol == "X" || p1.symbol == "O"
+
 	}
 
 	fmt.Println("Enter player's 2 name: ")
