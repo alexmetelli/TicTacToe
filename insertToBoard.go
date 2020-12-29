@@ -8,7 +8,7 @@ func insertToBoard(symbol string, board [3][3]string, coords [2]int) [3][3]strin
 
 	y := coords[1]
 	x := coords[0]
-	board[y][x] = symbol
+	board[x][y] = symbol
 
 	return board
 }
