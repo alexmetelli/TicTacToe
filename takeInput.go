@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 )
 
 // Asks the user to enter coordinates for insertion.
@@ -9,11 +10,18 @@ import (
 func takeInput(plr player) [2]int {
 
 	var coordinates [2]int
-
-	// Takes coordinate for y axis
+	var exitGame string
+	// Takes coordinate for x axis
 	fmt.Printf("%v select a row: ", plr.name)
-	fmt.Scanln(&coordinates[0])
-	coordinates[0] = coordinates[0] - 1
+	//fmt.Scanln(&exitGame)
+	fmt.Scanln(&coordinates[0], &exitGame)
+	if exitGame == "Q" {
+		fmt.Println("Quitting game...")
+		os.Exit(1)
+	} else {
+		coordinates[0] = coordinates[0] - 1
+	}
+
 	cond1 := coordinates[0] < 0 || coordinates[0] > 2
 	// checks if coordinates entered are between bounds (1,3)
 	for cond1 == true {
@@ -23,7 +31,7 @@ func takeInput(plr player) [2]int {
 		coordinates[0] = coordinates[0] - 1
 		cond1 = coordinates[0] < 0 || coordinates[0] > 2
 	}
-	// Takes coordinate for x axis
+	// Takes coordinate for y axis
 	fmt.Printf("%v select a column: ", plr.name)
 	fmt.Scanln(&coordinates[1])
 	coordinates[1] = coordinates[1] - 1

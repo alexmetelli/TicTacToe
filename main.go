@@ -10,6 +10,6 @@ type player struct {
 func main() {
 
 	board := makeBoard()
-	p1, p2 := askNames()
+	p1, p2 := askPlayersDetails()
 	game(p1, p2, board)
 }
