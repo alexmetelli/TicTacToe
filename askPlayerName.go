@@ -5,7 +5,7 @@ import (
 )
 
 func askPlayerName(p player) string {
-	fmt.Printf("Enter player's %v name: ", p)
+	fmt.Println("Enter player's name: ")
 	fmt.Scanln(&p.name)
 
 	return p.name

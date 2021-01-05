@@ -7,9 +7,19 @@ type player struct {
 	symbol string
 }
 
+type gameObject struct {
+	board [3][3]string
+	state bool
+	round int
+	p1    player
+	p2    player
+}
+
 func main() {
 
-	board := makeBoard()
-	p1, p2 := askPlayersDetails()
-	game(p1, p2, board)
+	newGame := createNewGame()
+	newGame.p1, newGame.p2 = askPlayersDetails()
+	for newGame.state == false {
+		newGame.state, newGame.board = round(newGame)
+	}
 }

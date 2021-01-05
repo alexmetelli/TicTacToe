@@ -1,49 +1,16 @@
 package main
 
-import (
-	"fmt"
-	"os"
-)
-
 // Asks the user to enter coordinates for insertion.
 // Return an array with coordinates in the form: [column, row]
-func takeInput(plr player) [2]int {
+func takeInput(p player) [2]int {
 
 	var coordinates [2]int
-	var exitGame string
-	// Takes coordinate for x axis
-	fmt.Printf("%v select a row: ", plr.name)
-	//fmt.Scanln(&exitGame)
-	fmt.Scanln(&coordinates[0], &exitGame)
-	if exitGame == "Q" {
-		fmt.Println("Quitting game...")
-		os.Exit(1)
-	} else {
-		coordinates[0] = coordinates[0] - 1
-	}
-
-	cond1 := coordinates[0] < 0 || coordinates[0] > 2
-	// checks if coordinates entered are between bounds (1,3)
-	for cond1 == true {
-		fmt.Println("Error! Coordinate must be between 1 and 3.")
-		fmt.Printf("%v select a row: ", plr.name)
-		fmt.Scanln(&coordinates[0])
-		coordinates[0] = coordinates[0] - 1
-		cond1 = coordinates[0] < 0 || coordinates[0] > 2
-	}
-	// Takes coordinate for y axis
-	fmt.Printf("%v select a column: ", plr.name)
-	fmt.Scanln(&coordinates[1])
-	coordinates[1] = coordinates[1] - 1
-	cond2 := coordinates[1] < 0 || coordinates[1] > 2
-	// checks if coordinates entered are between bounds (1,3)
-	for cond2 == true {
-		fmt.Println("Error! Coordinate must be between 1 and 3.")
-		fmt.Printf("%v select a column: ", plr.name)
-		fmt.Scanln(&coordinates[1])
-		coordinates[1] = coordinates[1] - 1
-		cond2 = coordinates[1] < 0 || coordinates[1] > 2
-	}
+	// Takes X axis coordinates and checks for validity.
+	coordinates[0] = getAxis(p.name, "row")
+	coordinates[0] = checkCoordinates(coordinates[0], p.name, "row")
+	// Takes Y axis coordinates and checks for validity.
+	coordinates[1] = getAxis(p.name, "column")
+	coordinates[1] = checkCoordinates(coordinates[1], p.name, "column")
 
 	return coordinates
 }
